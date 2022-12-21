@@ -4,19 +4,17 @@ public class Account {
 
 	private Integer number;
 	private String holder;
-	public Double balance;
-	private Double withdraw;
+	private Double balance;
+	private Double withdrawLimit;
 	
 	public Account() {
-		super();
 	}
 
-	public Account(Integer number, String holder, Double balance, Double withdraw) {
-		super();
+	public Account(Integer number, String holder, Double balance, Double withdrawLimit) {
 		this.number = number;
 		this.holder = holder;
 		this.balance = balance;
-		this.withdraw = withdraw;
+		this.withdrawLimit = withdrawLimit;
 	}
 
 	public Integer getNumber() {
@@ -39,16 +37,12 @@ public class Account {
 		return balance;
 	}
 
-	public void setBalance(Double balance) {
-		this.balance = balance;
+	public Double getWithdrawLimit() {
+		return withdrawLimit;
 	}
 
-	public Double getWithdraw() {
-		return withdraw;
-	}
-
-	public void setWithdraw(Double withdraw) {
-		this.withdraw = withdraw;
+	public void setWithdrawLimit(Double withdrawLimit) {
+		this.withdrawLimit = withdrawLimit;
 	}
 	
 	public void deposit(double amount) {
@@ -58,4 +52,12 @@ public class Account {
 	public void withdraw(double amount) {
 		balance -= amount;
 	}
+
+	@Override
+	public String toString() {
+		return String.format("%.2f", getBalance());
+	}
+	
+	
+
 }
