@@ -53,11 +53,17 @@ public class Account {
 	}
 	
 	public void withdraw(double amount) {
-		
-		if (amount > getBalance() || amount > getWithdrawLimit()) {
-			throw new DomainException("The amount exceeds withdraw limit");
-		} else {
+		validatedWithdraw(amount);		
 		balance -= amount;
+		
+	}
+	
+	public void validatedWithdraw(double amount) {
+		if (amount > getWithdrawLimit()) {
+			throw new DomainException("Erro de saque: Quantia excede limite de saque!");
+		}
+		if (amount > getBalance()) {
+			throw new DomainException("Erro de saque: Quantia excede saldo da conta!");
 		}
 	}
 
